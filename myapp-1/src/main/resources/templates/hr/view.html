@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>정보 조회</title>
+</head>
+<body>
+	<p th:text="${count}">사원의 수</p>
+	<div th:if="${emp!=null}" th:object="${emp}">
+		<div th:if="${emp!=null}" th:object="${emp}">
+			<p th:text="*{EMPLOYEE_ID}">사원아이디</p>
+			<p th:text="|*{FIRST_NAME}	*{LAST_NAME}|">이름</p>
+			<p th:text="*{EMAIL}">이메일</p>
+			<p th:text="*{PHONE_NUMBER}">전화번호</p>
+			<p th:text="*{HIRE_DATE}">입사일</p>
+			<p th:text="*{JOB_ID}">직무아이디</p>
+			<p th:text="*{SALARY}">급여</p>
+			<p th:if="${emp.containsKey('COMMISSION_PCT')}">
+				<span th:text="*{COMMISSION_PCT}">보너스</span>
+			</p>
+			<p th:if="${emp.containsKey('DEPARTMENT_ID')}">
+				<span th:text="*{DEPARTMENT_ID}">부서</span>
+			</p>
+
+		</div>
+</body>
+</html>
