@@ -26,10 +26,14 @@ public class EmpController {
 		return empService.getEmpCount();
 	}
 	
-//	@GetMapping("/{employeeId}")
-//	public ResponseEntity<Emp> getEmpInfo(@PathVariable int employeeId) {
-//		Emp emp = empService.getEmpInfo(employeeId);
-//		return emp.map(ResponseEntity::ok)
-//	}
+	@GetMapping("/{employeeId}")
+	public ResponseEntity<Emp> getEmpInfo(@PathVariable int employeeId) {
+		Emp emp = empService.getEmpInfo(employeeId);
+		if (emp != null) {
+	        return ResponseEntity.ok(emp); // emp 객체를 응답 본문에 포함시킴
+	    } else {
+	        return ResponseEntity.notFound().build(); // emp가 없을 경우 404 상태 코드 반환
+	    }
+	}
 	
 }
